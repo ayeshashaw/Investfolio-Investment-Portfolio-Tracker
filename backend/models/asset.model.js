@@ -1,10 +1,9 @@
 const mongoose = require('mongoose');
-const userModels = require('./userModels');
 
 const assetSchema = new mongoose.Schema({
     userId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'userModels', // use the model name as a string
+        ref: 'User', // use the model name as a string
     },
     assetName: {
         type: String,

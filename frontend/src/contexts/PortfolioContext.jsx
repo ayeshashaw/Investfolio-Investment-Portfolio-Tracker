@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import { mockHistoricalData } from '../data/mockData';
 import axios from 'axios';
+import { useAuth } from '../contexts/AuthContext';
 
 const PortfolioContext = createContext(null);
 
@@ -14,12 +15,35 @@ export function PortfolioProvider({ children }) {
   const [portfolioValue, setPortfolioValue] = useState(0);
   const [portfolioChangePercent, setPortfolioChangePercent] = useState(0);
   const [portfolioChangeAmount, setPortfolioChangeAmount] = useState(0);
+  
+  // Get auth context to be aware of user changes
+  const { currentUser, userId } = useAuth();
+
+  // Reset portfolio data when user changes or logs out
+  useEffect(() => {
+    // Clear assets when user changes or logs out
+    setAssets([]);
+    setPortfolioValue(0);
+    setPortfolioChangePercent(0);
+    setPortfolioChangeAmount(0);
+    
+    // Only fetch assets if there's a logged-in user
+    if (currentUser) {
+      fetchAssets();
+    }
+  }, [userId]); // This will trigger when the user ID changes
 
   // Fetch assets from the backend
   const fetchAssets = async () => {
     setLoading(true);
     try {
+      // Only proceed if we have a token
       const token = localStorage.getItem('token');
+      if (!token) {
+        setAssets([]);
+        setLoading(false);
+        return;
+      }
 
       const response = await axios.get('http://localhost:3777/api/user/getassets', {
         headers: {
@@ -33,18 +57,15 @@ export function PortfolioProvider({ children }) {
         calculatePortfolioStats(fetchedAssets);
       } else {
         console.error('Failed to fetch assets:', response.data.message);
+        setAssets([]);
       }
     } catch (error) {
       console.error('Error loading portfolio data:', error);
+      setAssets([]);
     } finally {
       setLoading(false);
     }
   };
-
-  // Load initial data
-  useEffect(() => {
-    fetchAssets();
-  }, []);
 
   // Calculate portfolio statistics
   const calculatePortfolioStats = (assetList) => {
@@ -58,10 +79,9 @@ export function PortfolioProvider({ children }) {
     setPortfolioChangePercent(changePercent);
   };
 
-  // Add a new asset - This is handled in the form component with API call
+  // Add a new asset
   const addAsset = async (newAsset) => {
     // This is mainly kept for compatibility
-    // The actual API call is in AssetForm
     // After API call, fetchAssets() will update the state
     return newAsset;
   };
@@ -168,7 +188,7 @@ export function PortfolioProvider({ children }) {
     removeAsset,
     getAssetHistoricalData,
     getAssetAllocation,
-    fetchAssets  // Export this function so components can use it
+    fetchAssets
   };
 
   return (

@@ -10,7 +10,7 @@ const authUser = async (req, res, next) => {
     }
 
     // Extract token
-    const token = authHeader.split(" ")[1];
+    const token = authHeader.split(" ")[1]?.trim();
 
     // Verify token
     const decoded = jwt.verify(token, process.env.JWT_SECRET);

@@ -342,17 +342,17 @@ const deleteAsset = async (req, res) => {
 
 const getAssetDetails = async (req, res) => {
   try {
-    let assetDetails = await asset.find({ userId: req.user.id });
+    const assets = await asset.find({ userId: req.user.id });
 
-    if (assetDetails.length === 0) {
-      return res.status(403).json({
+    if (assets.length === 0) {
+      return res.status(404).json({
         status: false,
-        message: "No Assets Found",
+        message: "No assets found",
         data: null,
       });
     }
 
-    const transformedAssets = assetDetails.map((assetItem) => ({
+    const transformedAssets = assets.map((assetItem) => ({
       id: assetItem._id.toString(), // Use MongoDB's ObjectId as the id
       name: assetItem.assetName,
       symbol: assetItem.symbol,

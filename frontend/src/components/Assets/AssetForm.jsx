@@ -118,8 +118,8 @@ export default function AssetForm({ onClose, initialAsset = null }) {
           },
           {
             headers: {
-              Authorization: `Bearer ${token}`,
-            },
+              Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
           }
         );
 
