@@ -189,6 +189,10 @@ Common Issues:
 
 ### Interface Screenshots 📸
 
+#### Home Page
+![Home](frontend/public/images/home.png)
+The landing page with key features and call-to-action.
+
 #### Dashboard
 ![Dashboard](frontend/public/images/dashboard.png)
 The dashboard provides an overview of portfolio performance and asset allocation.
@@ -201,9 +205,6 @@ Users can view and manage all their investment assets in one place.
 ![Comparison](frontend/public/images/comparison.png)
 Compare performance across different portfolios and time periods.
 
-#### Home Page
-![Home](frontend/public/images/home.png)
-The landing page with key features and call-to-action.
 
 #### Team
 ![Team](frontend/public/images/ourTeam.png)
