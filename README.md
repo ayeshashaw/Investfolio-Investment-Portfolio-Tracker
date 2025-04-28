@@ -206,7 +206,7 @@ Compare performance across different portfolios and time periods.
 The landing page with key features and call-to-action.
 
 #### Team
-![Team](./public/images/ourTeam.png)
+![Team](frontend/public/images/ourTeam.png)
 Information about the development team behind the application.
 
 
