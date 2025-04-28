@@ -29,7 +29,7 @@ function AuthProvider({ children }) {
       // Clear any existing portfolio data before login
       localStorage.removeItem('portfolioAssets');
       
-      const response = await fetch('http://localhost:3777/api/user/login', {
+      const response = await fetch('https://investfolio.onrender.com/api/user/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -70,7 +70,7 @@ function AuthProvider({ children }) {
       // Clear any existing portfolio data before signup
       localStorage.removeItem('portfolioAssets');
       
-      const response = await fetch('http://localhost:3777/api/user/signup', {
+      const response = await fetch('https://investfolio.onrender.com/api/user/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
