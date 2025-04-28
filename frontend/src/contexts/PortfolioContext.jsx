@@ -45,7 +45,7 @@ export function PortfolioProvider({ children }) {
         return;
       }
 
-      const response = await axios.get('http://localhost:3777/api/user/getassets', {
+      const response = await axios.get('https://investfolio.onrender.com/api/user/getassets', {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -130,7 +130,7 @@ export function PortfolioProvider({ children }) {
       const token = localStorage.getItem('token');
       
       const response = await axios.delete(
-        `http://localhost:3777/api/user/deleteasset/${assetId}`,
+        `https://investfolio.onrender.com/api/user/deleteasset/${assetId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
