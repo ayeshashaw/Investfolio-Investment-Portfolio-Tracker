@@ -74,8 +74,8 @@ The Investment Portfolio Tracker provides a comprehensive solution for investors
 
 1. Clone the repository
 ```bash
-git clone <repository-url>
-cd Investment-Portfolio-Tracker
+git clone https://github.com/ayeshashaw/Investfolio-Investment-Portfolio-Tracker.git
+cd Investfolio-Investment-Portfolio-Tracker
 ```
 
 2. Set up environment variables
@@ -84,9 +84,6 @@ cd Investment-Portfolio-Tracker
 PORT=3777
 MONGODB_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret
-EMAIL_SERVICE=your_email_service
-EMAIL_USER=your_email_username
-EMAIL_PASS=your_email_password
 ```
 
 3. Install Backend Dependencies
