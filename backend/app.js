@@ -1,33 +1,30 @@
-require('dotenv').config();
+require('dotenv').config()
 const express = require('express');
-const cors = require('cors');
+const cors = require('cors')
 const connectDB = require('./config/db.js');
 const UserRouter = require('./routes/userRoutes.js');
-const serverless = require('serverless-http');
 
 const app = express();
+const PORT = process.env.PORT 
 
 app.use(express.json());
-
-// Configure CORS
+// Configure CORS to allow requests from frontend
 app.use(cors({
-    origin: '*',
+    origin: 'https://investfolio.vercel.app', // Vite's default development server port
     credentials: true,
     allowedHeaders: ['Content-Type', 'Authorization'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     optionsSuccessStatus: 204
-}));
+}))
 
-// Routes
-app.use("/api/user", UserRouter);
 
-// Connect DB
-connectDB.then(() => {
-    console.log("Database connected successfully.");
-}).catch((err) => {
-    console.log("Database Connection Error", err);
-});
+app.use("/api/user",UserRouter)
 
-// DO NOT call app.listen()
-// Just export the serverless version
-module.exports = serverless(app);
+connectDB.then(()=>{
+    app.listen(PORT, ()=>{
+        console.log(`server is listening on ${PORT}`)
+    })
+})
+.catch((err)=>{
+    console.log("Server Error", err)
+})
