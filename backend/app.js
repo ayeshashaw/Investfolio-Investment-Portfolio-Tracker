@@ -16,7 +16,9 @@ app.use(cors({
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     optionsSuccessStatus: 204
 }))
-
+app.get('/', (req, res) => {
+    res.send('Hello from Express on Vercel!');
+});
 
 app.use("/api/user",UserRouter)
 
