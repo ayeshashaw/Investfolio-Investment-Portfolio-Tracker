@@ -187,6 +187,29 @@ Common Issues:
 
 ## Features 💫
 
+### Interface Screenshots 📸
+
+#### Dashboard
+![Dashboard](./public/images/dashboard.png)
+The dashboard provides an overview of portfolio performance and asset allocation.
+
+#### Assets Management
+![Assets](./public/images/porfolio.png)
+Users can view and manage all their investment assets in one place.
+
+#### Portfolio Comparison
+![Comparison](./public/images/comparison.png)
+Compare performance across different portfolios and time periods.
+
+#### Home Page
+![Home](./public/images/home.png)
+The landing page with key features and call-to-action.
+
+#### Team
+![Team](./public/images/ourTeam.png)
+Information about the development team behind the application.
+
+
 ### User Authentication and Authorization 🔐
 - Secure user registration and login system
 - JWT-based authentication
@@ -221,11 +244,6 @@ Common Issues:
 - Asset allocation pie charts
 - Gain/loss visualization
 
-### Email Notifications 📧
-- Price alert notifications
-- Portfolio performance updates
-- Account security alerts
-- Custom notification preferences
 
 ### Responsive Design 🎨
 - Mobile-first approach
