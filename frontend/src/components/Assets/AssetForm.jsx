@@ -105,7 +105,7 @@ export default function AssetForm({ onClose, initialAsset = null }) {
       } else {
         // Direct API call for adding
         const response = await axios.post(
-          'http://localhost:3777/api/user/addasset',
+          'https://investfolio.onrender.com/api/user/addasset',
           {
             assetName: assetData.name,
             symbol: assetData.symbol,
