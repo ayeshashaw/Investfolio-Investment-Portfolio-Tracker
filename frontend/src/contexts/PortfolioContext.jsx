@@ -92,7 +92,7 @@ export function PortfolioProvider({ children }) {
       const token = localStorage.getItem('token');
       
       const response = await axios.put(
-        `http://localhost:3777/api/user/updateasset/${updatedAsset.id}`,
+        `https://investfolio.onrender.com/api/user/updateasset/${updatedAsset.id}`,
         {
           assetName: updatedAsset.name,
           symbol: updatedAsset.symbol,
